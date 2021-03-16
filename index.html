@@ -14,11 +14,13 @@
     </header>
 
     <main>
-        <div class="container" >
-            <button class="btn btn-primary" id= "start">Begin Quiz</button>
+        <div class="container">
+            <div>
+                <button class="btn btn-primary" id= "start">Begin Quiz</button>
+            </div>
         </div>
     
-        <section id="quiz" class="container" style="display: none;">
+        <section id="quiz" class="whiteBckg"  style="display: none;">
             <div id="question"></div>
             <div id="choices" >
                 <button class="btn btn-light" id="A" onclick="checkAnswer(1)"></button>
@@ -31,9 +33,11 @@
             <p id="timer"></p>
         </section>
     
-        <section id="report" style="display: none;">
-            <p id= "score"> </p>
-            <button id="record" class="btn btn-success">Store high score</button>
+        <section id="report" class="container"  style="display: none;">
+            <div class="whiteBckg">
+                <p id= "score"> </p>
+                <button id="record" class="btn btn-success">Store high score</button>
+            </div>
         </section>
 
         <section id="highscores" style="display: none;">

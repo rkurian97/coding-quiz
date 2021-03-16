@@ -128,6 +128,10 @@ record.addEventListener("click", storeHighScore)
 
 //function to show high score table 
 function viewHighScores(){
+    // If there are no records then alert to take the quiz
+    if (!localStorage.getItem(localStorage.key(0))){
+        window.alert("No highscores recorded. Take the quiz and record your highscore");
+    }
 
     //Clearing tables if it has more than 1 row. So there are no duplicate values when you click on View Highscore. 
     if(hsTable.rows.length>1){
