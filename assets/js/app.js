@@ -101,10 +101,14 @@ function checkAnswer(answer){
     let q= questions[runningQuestion]
     if (q.answer==answer){
         feedback.innerHTML="Correct";
+        feedback.style.color= "green";
+        feedback.style.fontWeight= "bold";
     }
     else{
         quizTimer=quizTimer-5;
-        feedback.innerHTML="Incorrect";
+        feedback.innerHTML="Wrong";
+        feedback.style.color= "red";
+        feedback.style.fontWeight= "bold";
     }
     if (runningQuestion<(questions.length-1)){
         runningQuestion++;
