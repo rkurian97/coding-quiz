@@ -129,10 +129,10 @@ record.addEventListener("click", storeHighScore)
 //function to show high score table 
 function viewHighScores(){
 
-    //this doesnt work but it was my attempt at deleting the old table so there will be no repeated values. 
-    // newTbody= document.createElement('tbody');
-    // oldtbody.parentNode.replaceChild(newTbody, oldtbody);
-    // oldtbody=document.querySelector('tbody');
+    for (let j=0; j<hsTable.rows.length; j++){
+        let rowCount= hsTable.rows.length;
+        hsTable.deleteRow(rowCount-1);
+    }
     quiz.setAttribute("style", "display: none");
     report.setAttribute("style", "display: none");
     start.setAttribute("style", "display: initial");
