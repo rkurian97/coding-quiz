@@ -129,14 +129,17 @@ record.addEventListener("click", storeHighScore)
 //function to show high score table 
 function viewHighScores(){
 
-    for (let j=0; j<hsTable.rows.length; j++){
-        let rowCount= hsTable.rows.length;
-        hsTable.deleteRow(rowCount-1);
+    //Clearing tables if it has more than 1 row. So there are no duplicate values when you click on View Highscore. 
+    if(hsTable.rows.length>1){
+        let y=hsTable.rows.length;
+        for (let j=0; j<y-1; j++){
+            let rowCount= hsTable.rows.length;
+            hsTable.deleteRow(rowCount-1);
+        }
     }
     quiz.setAttribute("style", "display: none");
     report.setAttribute("style", "display: none");
     start.setAttribute("style", "display: initial");
-
     for (let i=0; i<localStorage.length; i++){
         // Showing the table 
         hs.setAttribute("style", "display: initial");
