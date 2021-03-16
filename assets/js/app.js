@@ -1,3 +1,4 @@
+// Made and Array of Objects with the questions
 let questions= [
     {
         question: "1. Who is making the Web Standards?",
@@ -26,6 +27,7 @@ let questions= [
     }
 ];
 
+//Getting all the needed elements from the html
 const start= document.getElementById("start");
 const quiz= document.getElementById("quiz");
 const counter= document.getElementById("counter");
@@ -49,18 +51,27 @@ const choiceA= document.getElementById("A");
 const choiceB= document.getElementById("B");
 const choiceC= document.getElementById("C");
 
+//Initializing some variables that I need
 let quizTimer;
 let runningQuestion;
 let timerInterval;
 
+// This is when you click on Begin Quiz. 
 function begin(){
+
+    //Showing all necessary containers for the quiz
     quiz.setAttribute("style", "display: inital");
     start.setAttribute("style", "display: none");
     report.setAttribute("style", "display: none");
     hs.setAttribute("style", "display: none");
+
+    //Setting to question 1 and timer to 75
     runningQuestion=0;
     quizTimer=75;
+    //Showing the question
     showQuestion(runningQuestion);
+
+    //Countdown goes from 75 to 0 when at 0 it goes to screen where you enter high score into local storage
     timerInterval=setInterval(function(){
             quizTimer--
             timer.innerHTML=quizTimer;
@@ -76,6 +87,7 @@ function begin(){
 }
 start.addEventListener("click", begin);
 
+//Function to show the question 
 function showQuestion(){
     let q= questions[runningQuestion];
     question.innerHTML= "<p>"+ q.question+"</p>";
@@ -84,6 +96,7 @@ function showQuestion(){
     choiceC.innerHTML=q.choice[2];
 }
 
+//Function to check the answer. If its wrong subtract 5 secs from the timers. 
 function checkAnswer(answer){
     let q= questions[runningQuestion]
     if (q.answer==answer){
@@ -106,28 +119,32 @@ function checkAnswer(answer){
     }
 }
 
+// When you click on store high scores, it prompts to enter name and then stores score in local storage
 function storeHighScore(){
     let name= window.prompt("Enter name");
     localStorage.setItem(name, quizTimer);
 }
 record.addEventListener("click", storeHighScore)
 
+//function to show high score table 
 function viewHighScores(){
-    newTbody= document.createElement('tbody');
-    oldtbody.parentNode.replaceChild(newTbody, oldtbody);
-    oldtbody=document.querySelector('tbody');
+
+    //this doesnt work but it was my attempt at deleting the old table so there will be no repeated values. 
+    // newTbody= document.createElement('tbody');
+    // oldtbody.parentNode.replaceChild(newTbody, oldtbody);
+    // oldtbody=document.querySelector('tbody');
+    quiz.setAttribute("style", "display: none");
+    report.setAttribute("style", "display: none");
+    start.setAttribute("style", "display: initial");
 
     for (let i=0; i<localStorage.length; i++){
-        quiz.setAttribute("style", "display: none");
-        report.setAttribute("style", "display: none");
-        start.setAttribute("style", "display: initial");
-    
-
+        // Showing the table 
         hs.setAttribute("style", "display: initial");
-
+        //Inserting new rows at the end of the table
         let row= hsTable.insertRow(-1);
         let cell1= row.insertCell(0);
         let cell2= row.insertCell(1);
+        //Inserting each entry from local storage
         cell1.innerHTML= localStorage.key(i);
         cell2.innerHTML= localStorage.getItem(localStorage.key(i));
         
